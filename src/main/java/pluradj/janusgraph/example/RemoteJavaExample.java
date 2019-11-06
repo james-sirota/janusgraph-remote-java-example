@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 public class RemoteJavaExample {
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteJavaExample.class);
-    private static final String GRAPH_NAME = "janus_test";
+    private static final String GRAPH_NAME = "test_janus";
 
     public static void main(String[] args) throws ConfigurationException {
         // https://tinkerpop.apache.org/docs/current/reference/#connecting-via-java
