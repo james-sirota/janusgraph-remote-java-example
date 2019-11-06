@@ -36,12 +36,25 @@ public class RemoteJavaExample {
         GryoMapper.Builder builder = GryoMapper.build().addRegistry(JanusGraphIoRegistry.getInstance());
         MessageSerializer serializer = new GryoMessageSerializerV1d0(builder);
 
-        Cluster cluster = Cluster.build().
+      /*  Cluster cluster = Cluster.build().
             addContactPoint(contactPoint).
             port(port).
             serializer(serializer).
             create();
-        Client client = cluster.connect().init();
+        Client client = cluster.connect().init();*/
+        
+        
+        Configuration remoteConf = new PropertiesConfiguration("conf/remote-graph.properties");
+        
+        Cluster cluster;
+        Client client;
+        
+        try {
+            cluster = Cluster.open(remoteConf.getString("gremlin.remote.driver.clusterFile"));
+            client = cluster.connect();
+        } catch (Exception e) {
+            throw new ConfigurationException(e);
+        }
         
         
         JanusGraphManager gm = new JanusGraphManager(new Settings());
