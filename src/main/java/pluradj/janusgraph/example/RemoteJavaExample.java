@@ -46,6 +46,9 @@ public class RemoteJavaExample {
         
         JanusGraphManager gm = new JanusGraphManager(new Settings());
         PropertiesConfiguration graphConf = new PropertiesConfiguration("conf/remote-graph.properties");
+        
+        System.out.println("Getting configs for graph: " + graphConf.toString());
+        
 
      // ConfiguredGraphFactory needs a graph configuration to store configurations
         StandardJanusGraph graph =
@@ -54,7 +57,12 @@ public class RemoteJavaExample {
                 				new CommonsConfiguration(graphConf)
                 				)
                 		);
-        new ConfigurationManagementGraph(graph);
+        
+        System.out.println("Loaded StandardJanusGraph: " + graph.toString());
+        
+        ConfigurationManagementGraph configGraph = new ConfigurationManagementGraph(graph);
+        
+        System.out.println("Loaded configGraph: " + configGraph.toString());
         
         
      // Creating template configuration or updating if one already exists
