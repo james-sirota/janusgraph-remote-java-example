@@ -47,7 +47,9 @@ public class RemoteJavaExample {
         JanusGraphManager gm = new JanusGraphManager(new Settings());
         PropertiesConfiguration graphConf = new PropertiesConfiguration("conf/remote-graph.properties");
         
-        System.out.println("Getting configs for graph: " + graphConf.toString());
+        System.out.println("Getting configs for graph: " + graphConf.getKeys());
+        
+    
         
 
      // ConfiguredGraphFactory needs a graph configuration to store configurations
