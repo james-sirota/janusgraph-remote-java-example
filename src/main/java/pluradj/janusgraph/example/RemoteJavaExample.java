@@ -1,5 +1,6 @@
 package pluradj.janusgraph.example;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
@@ -47,8 +48,18 @@ public class RemoteJavaExample {
         JanusGraphManager gm = new JanusGraphManager(new Settings());
         PropertiesConfiguration graphConf = new PropertiesConfiguration("conf/remote-graph.properties");
         
-        System.out.println("Getting configs for graph: " + graphConf.getKeys());
+        System.out.println("[DEBUG] graphConf contains the following properties: ");
+
+        Iterator<String> keys = graphConf.getKeys();
         
+        while(keys.hasNext())
+        {
+        	String key = keys.next();
+        	String val = graphConf.getString(key);
+        	System.out.println("[DEBUG] Getting configs for key: " + key + " and value " + val);
+        }
+        	
+        	
     
         
 
